@@ -1,0 +1,23 @@
+[package]
+name = "agent_program"
+version = "0.1.0"
+edition = "2021"
+description = "Minimal automation agent: spends a user's delegated Token-2022 allowance on a fixed schedule of payees."
+publish = false
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+# Silences the cfg checks inside the entrypoint macro.
+no-entrypoint = []
+custom-heap = []
+custom-panic = []
+
+[dependencies]
+solana-program = "5"
+solana-system-interface = { version = "3.2", features = ["bincode"] }
+spl-token-2022-interface = "3.1.2"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }

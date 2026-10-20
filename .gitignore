@@ -1,0 +1,12 @@
+# build output
+/target/
+programs/*/target/
+
+# generated program keypairs: never commit these
+*-keypair.json
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,127 @@
+﻿   Compiling remittance_stablecoin v0.1.0 (E:\week4)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 13.08s
+     Running unittests src\lib.rs (target\debug\deps\agent_program-f7984b6f5e34f303.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\remittance_stablecoin-0bd3ca25dd07cd86.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\extension_challenge.rs (target\debug\deps\extension_challenge-a7cd24a781798063.exe)
+
+running 8 tests
+test funds_can_only_go_to_the_configured_payee ... ok
+test cpi_guard_blocks_owner_signed_cpi_transfers_but_not_delegate_signed_ones ... ok
+test the_owner_can_revoke_the_agent_at_any_time ... ok
+test per_transaction_limit_and_the_allowance_both_bind ... ok
+test agent_spends_the_delegated_allowance_and_pays_the_fee ... ok
+test only_the_named_operator_can_trigger_a_transfer ... ok
+test cpi_guard_also_refuses_approve_through_a_cpi_so_the_grant_must_be_direct ... ok
+test cpi_guard_does_not_disturb_the_delegated_path ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running tests\task1_mint.rs (target\debug\deps\task1_mint-bb6e415300886f36.exe)
+
+running 7 tests
+test every_extension_initializer_precedes_initialize_mint ... ok
+test initializing_an_extension_after_the_mint_is_rejected ... ok
+test undersized_allocation_is_rejected ... ok
+test mint_has_exactly_the_four_extensions_and_is_sized_by_the_calculator ... ok
+test extension_configuration_is_what_was_asked_for ... ok
+test new_token_accounts_are_born_frozen ... ok
+test close_authority_can_decommission_the_mint_only_at_zero_supply ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests\task2_transfer_fee.rs (target\debug\deps\task2_transfer_fee-3d47fc4f10dabc36.exe)
+
+running 7 tests
+test transfer_is_a_transfer_checked_with_fee_and_withholds_the_fee ... ok
+test fee_is_capped_at_the_maximum ... ok
+test quote_matches_calculate_epoch_fee_for_the_current_epoch ... ok
+test only_the_fee_config_authority_can_reschedule_the_fee ... ok
+test the_program_rejects_a_fee_that_does_not_match_its_own_calculation ... ok
+test fee_follows_the_epoch_schedule_and_a_cached_rate_goes_stale ... ok
+test plain_transfer_checked_silently_pays_whatever_fee_is_current ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests\task3_state.rs (target\debug\deps\task3_state-c394bd8724b0045f.exe)
+
+running 4 tests
+test raw_unpack_rejects_every_extended_account ... ok
+test mint_and_account_state_come_back_through_state_with_extensions ... ok
+test nothing_in_the_crate_uses_raw_unpack ... ok
+test truncated_raw_reads_are_blind_to_extensions_and_the_typed_reader_checks_account_type ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests\task4_kyc.rs (target\debug\deps\task4_kyc-68e7f9f3a94bfc8f.exe)
+
+running 6 tests
+test thawing_a_thawed_account_is_caught_before_the_chain_sees_it ... ok
+test nobody_but_the_freeze_authority_can_thaw ... ok
+test freeze_authority_thaws_one_account_and_only_that_account ... ok
+test frozen_accounts_can_neither_receive_nor_send ... ok
+test changing_the_default_state_does_not_thaw_existing_accounts ... ok
+test freeze_authority_can_refreeze_after_a_sanctions_hit ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running tests\task5_reissue.rs (target\debug\deps\task5_reissue-9a299f6c06c385bb.exe)
+
+running 7 tests
+test reissued_mint_carries_the_v1_extension_set_forward_and_adds_three ... ok
+test confidential_transfers_cannot_be_bolted_onto_the_existing_mint ... ok
+test permanent_delegate_can_also_burn ... ok
+test only_the_permanent_delegate_can_seize ... ok
+test permanent_delegate_seizes_the_public_balance_without_the_owners_signature ... ok
+test a_frozen_account_cannot_be_seized_until_it_is_thawed ... ok
+test holders_migrate_by_burning_v1_and_the_old_mint_is_closed ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests\task6_confidential.rs (target\debug\deps\task6_confidential-ef75ae1581c93d32.exe)
+
+running 5 tests
+test only_the_range_proofs_are_too_big_to_verify_from_instruction_data ... ok
+test manual_policy_blocks_deposits_until_the_issuer_approves ... ok
+test only_the_owner_can_configure_even_though_anyone_could_create_the_account ... ok
+test a_frozen_account_cannot_use_confidential_instructions ... ok
+test full_confidential_lifecycle ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.06s
+
+     Running tests\task7_sanctions_gap.rs (target\debug\deps\task7_sanctions_gap-5edec1d37467b3c1.exe)
+
+running 9 tests
+test baseline_the_delegate_seizes_everything_that_is_still_public ... ok
+test an_unapproved_account_cannot_receive_a_confidential_transfer ... ok
+test a_deposit_is_unreachable_even_before_it_is_applied ... ok
+test after_shielding_the_delegate_has_nothing_to_seize ... ok
+test a_partial_shield_leaves_the_remainder_seizable ... ok
+test an_exit_back_to_the_public_balance_is_seizable_again ... ok
+test the_permanent_delegate_is_not_recognised_by_confidential_instructions ... ok
+test the_auditor_reads_amounts_but_not_balances_and_cannot_move_anything ... ok
+test freezing_locks_the_confidential_balance_but_does_not_recover_it ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.74s
+
+   Doc-tests agent_program
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests remittance_stablecoin
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
